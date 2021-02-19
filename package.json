@@ -1,0 +1,83 @@
+{
+  "name": "eapi-customer-rest",
+  "version": "1.0.0",
+  "description": "Boilerplate api queries",
+  "private": true,
+  "scripts": {
+    "watch": "nodemon --inspect --nolazy",
+    "start": "node app.js",
+    "install-prod": "npm install --production",
+    "eslint": "./node_modules/.bin/eslint -c ./test/.eslintrc.json . -f ./node_modules/eslint-detailed-reporter/lib/detailed.js -o ./test/unit/reports/quality/index.html || exit 0",
+    "unit-test": "mocha ./test/unit/*.js --timeout 10000 --exit --reporter mochawesome --reporter-options reportDir=test/unit/reports/status,enableCode=false,reportFilename=index,reportPageTitle=\"Unit Test Report\",inlineAssets=true",
+    "test": "mocha ./test/unit/test.js --timeout 10000 --exit",
+    "coverage": "nyc --reporter=lcov --reporter=text-lcov --report-dir=test/unit/reports/coverage npm test",
+    "cucumber-all": "node ./node_modules/cucumber/bin/cucumber-js --tags @all ./test/features/*.feature --format json:./test/functional/reports/results-cucumber-all.json",
+    "cucumber-error": "node ./node_modules/cucumber/bin/cucumber-js --tags @error ./test/features/*.feature --format json:./test/functional/reports/results-cucumber-error.json",
+    "build-prod": "rm -rf node_modules && npm run install-prod",
+    "pack": "rm -rf build && mkdir -p build && zip -r build/eapi-customer-rest.zip config node_modules routes utils app.js package.json package-lock.json",
+    "sonar": "node sonar-project.js"
+  },
+  "nyc": {
+    "_comment": "Purpose of this part: to do code coverage within Mocha/Chai using Istanbul",
+    "register": "babel-register",
+    "include": [
+      "**/routes/error/**",
+      "**/routes/**",
+      "*.js"
+    ],
+    "exclude": [
+      "**/node_modules/**",
+      "**/test/**",
+      "**/utils/**",
+      "**/coverage/**",
+      "**/mochawesome-report/**",
+      "sonar-project.js"
+    ],
+    "all": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://oneit.wba.com/versioncontrol/scm/iceleap/cicd-dev-nodejsapi-boilerplate.git"
+  },
+  "author": "whatever@walgreens.com",
+  "license": "ISC",
+  "dependencies": {
+    "@azure/cosmos": "^3.6.3",
+    "applicationinsights": "^1.8.3",
+    "async": "^3.0.1",
+    "config": "^3.1.0",
+    "constantinople": "^3.1.2",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "http-errors": "~1.6.2",
+    "jquery": "^3.5.1",
+    "js-yaml": "^3.13.1",
+    "mongodb": "^3.6.4",
+    "mongoose": "^5.11.15",
+    "morgan": "~1.9.0",
+    "node-datetime": "^2.1.2",
+    "nodecloud-config-client": "^0.1.1",
+    "pug": "~2.0.4",
+    "underscore": "1.8.3",
+    "uuid-by-string": "^3.0.2"
+  },
+  "devDependencies": {
+    "apickli": "^2.3.1",
+    "assert": "^1.4.1",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "cucumber": "^5.1.0",
+    "debug": "~2.6.9",
+    "eslint": "^7.0.0",
+    "eslint-detailed-reporter": "^0.8.0",
+    "index": "^0.4.0",
+    "mocha": "^6.1.4",
+    "mochawesome": "^3.1.2",
+    "nock": "^10.0.6",
+    "nodemon": "^1.19.0",
+    "nyc": "^15.0.1",
+    "prettyjson": "latest",
+    "prop-types": "^15.7.2",
+    "sonarqube-scanner": "^2.6.0"
+  }
+}

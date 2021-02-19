@@ -1,0 +1,35 @@
+{
+    "patientId": "58519001003",
+    "firstName": "nŮźDåŷ:ė",
+    "middleInit": "patient middle initial",
+    "lastName": "nŮźDåŷ:ė",
+    "surnameSuffix": "patient name suffix (Jr, Sr, thrird,...)",
+    "gender": "patient gender",
+    "email": "nŮźDåŷ:ė",
+    "dob": "mm/dd/yyyy, 08/25/1909",
+    "phoneNumberAreaCode": "nŮźDåŷ:ė",
+    "phoneNumber": "nŮźDåŷ:ė",
+    "preferredStoreNumber": 0,
+    "lastFilledStoreNumber": "string",
+    "preferredPaymentMethod": "string",
+    "previousFilledLastMile": "string",
+    "customerShippingAddress": {
+      "addressLine1": "nŮźDåŷ:ė",
+      "city": "nŮźDåŷ:ė",
+      "zipCode": "Encrypted - string FPE",
+      "state": "string"
+      
+    },
+    "profilePaymentDetails": [
+      {
+        "cardType": "string",
+        "creditCard": "string",
+        "lastFourDigits": 0,
+        "expiryMonth": 0,
+        "expiryYear": 0,
+        "zipCode": "string",
+        "isDefault": true
+      }
+    ]     
+         
+  }

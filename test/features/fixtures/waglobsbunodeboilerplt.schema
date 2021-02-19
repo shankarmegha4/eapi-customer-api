@@ -1,0 +1,106 @@
+{
+   "openapi": "3.0.2",
+   "info": {
+      "title": "Boilerplate API",
+      "description": "Boilerplate api queries",
+      "version": "0.0.1",
+      "contact": {
+         "name": "ICE development team",
+         "email": "whatever@walgreens.com"
+      }
+   },
+   "servers": [
+      {
+         "url": "http://{environment}:8080/",
+         "description": "internal URL where API is exposed.",
+         "variables": {
+            "environment": {
+               "default": "localhost",
+               "enum": [
+                  "localhost-sit",
+                  "localhost-staging",
+                  "localhost-prod"
+               ]
+            }
+         }
+      }
+   ],
+   "paths": {
+      "/api/v1/walgreens/pharmacy/customers/ping": {
+         "get": {
+            "summary": "Validate API status",
+            "description": "This resource will get the status of the API",
+            "operationId": "getPingResponse",
+            "parameters": [
+            ],
+            "tags": [
+               "obtain generic status of the API"
+            ],
+            "responses": {
+               "200": {
+                  "description": "successful response for ping API",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "object",
+                           "properties": {
+                              "status": {
+                                 "description": "generic status of the API",
+                                 "type": "string"
+                              },
+                              "apiName": {
+                                 "description": "api name for the api",
+                                 "type": "string"
+                              },
+                              "apiVersion": {
+                                 "description": "Api version deployed",
+                                 "type": "string"
+                              }
+                           }
+                        },
+                        "example": {
+                           "200": {
+                              "status": "ok",
+                              "apiName": "eapi-customer-rest",
+                              "version": "v0_0_1"
+                           }
+                        }
+                     }
+                  }
+               },
+               "500": {
+                  "description": "Generic error response for ping API",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "object",
+                           "properties": {
+                              "status": {
+                                 "description": "generic status of the API",
+                                 "type": "string"
+                              },
+                              "apiName": {
+                                 "description": "api name for the api",
+                                 "type": "string"
+                              },
+                              "apiVersion": {
+                                 "description": "Api version deployed",
+                                 "type": "string"
+                              }
+                           }
+                        },
+                        "example": {
+                           "500": {
+                              "status": "fail",
+                              "apiName": "eapi-customer-rest",
+                              "version": "v0_0_1"
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+}
